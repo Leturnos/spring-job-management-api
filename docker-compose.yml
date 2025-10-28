@@ -1,0 +1,10 @@
+services:
+  postgres:
+    container_name: gestao_vagas_postgresql
+    image: postgres:latest
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=gestao_vagas
