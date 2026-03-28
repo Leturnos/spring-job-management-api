@@ -1,24 +1,23 @@
 package rocketseat.gestao_vagas.modules.company.controller;
 
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import rocketseat.gestao_vagas.modules.company.entities.JobEntity;
-import rocketseat.gestao_vagas.modules.company.useCases.CreateJobUseCase;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import rocketseat.gestao_vagas.modules.company.entity.JobEntity;
+import rocketseat.gestao_vagas.modules.company.useCase.CreateJobUseCase;
 
 @RestController
-@RequestMapping("/job")
+@RequestMapping("/company/job")
+@RequiredArgsConstructor
 public class JobController {
 
-    @Autowired
-    private CreateJobUseCase createJobUseCase;
+    private final CreateJobUseCase createJobUseCase;
 
     @PostMapping
-    public JobEntity create(@Valid @RequestBody JobEntity jobEntity){
-        return this.createJobUseCase.execute(jobEntity);
-
+    public ResponseEntity<Object> create(@Valid @RequestBody JobEntity jobEntity){
+        var result = createJobUseCase.execute(jobEntity);
+        return ResponseEntity.status(HttpStatus.CREATED).body(result);
     }
 }

@@ -1,4 +1,4 @@
-package rocketseat.gestao_vagas.modules.candidate;
+package rocketseat.gestao_vagas.modules.company.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,14 +13,13 @@ import org.hibernate.validator.constraints.Length;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+@Entity(name = "company")
 @Data
-@Entity(name = "candidate")
-public class CandidateEntity {
+public class CompanyEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-    private String name;
 
     @Pattern(regexp = "\\S+", message = "O campo username não deve conter espaços")
     private String username;
@@ -30,11 +29,10 @@ public class CandidateEntity {
 
     @Length(min = 8, max = 100)
     private String password;
+
+    private String website;
     private String description;
-    private String curriculum;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
 }
-
-

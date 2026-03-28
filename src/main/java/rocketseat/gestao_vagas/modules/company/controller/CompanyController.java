@@ -1,30 +1,26 @@
 package rocketseat.gestao_vagas.modules.company.controller;
 
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import rocketseat.gestao_vagas.exceptions.UserFoundException;
-import rocketseat.gestao_vagas.modules.company.entities.CompanyEntity;
-import rocketseat.gestao_vagas.modules.company.useCases.CreateCompanyUseCases;
+import rocketseat.gestao_vagas.modules.company.entity.CompanyEntity;
+import rocketseat.gestao_vagas.modules.company.useCase.CreateCompanyUseCase;
 
 @RestController
 @RequestMapping("/company")
+@RequiredArgsConstructor
 public class CompanyController {
 
-    @Autowired
-    private CreateCompanyUseCases createCompanyUseCases;
+    private final CreateCompanyUseCase createCompanyUseCases;
 
-    @PostMapping("/")
+    @PostMapping
     public ResponseEntity<Object> create(@Valid @RequestBody CompanyEntity companyEntity){
-        try {
-            var result = this.createCompanyUseCases.execute(companyEntity);
-            return ResponseEntity.ok().body(result);
-        }catch (UserFoundException e){
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
+        var result = createCompanyUseCases.execute(companyEntity);
+        return ResponseEntity.status(HttpStatus.CREATED).body(result);
     }
 }

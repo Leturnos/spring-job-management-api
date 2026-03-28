@@ -1,7 +1,7 @@
-package rocketseat.gestao_vagas.modules.company.repositories;
+package rocketseat.gestao_vagas.modules.company.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import rocketseat.gestao_vagas.modules.company.entities.JobEntity;
+import rocketseat.gestao_vagas.modules.company.entity.JobEntity;
 
 import java.util.UUID;
 
