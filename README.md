@@ -13,6 +13,7 @@ API RESTful para gestão de vagas, desenvolvida como parte da trilha de estudos 
 * **Tratamento de Exceções Global:** Um `ExceptionHandlerController` centralizado captura exceções de negócio e validação, retornando mensagens de erro padronizadas.
 * **Validação:** Uso do `Spring Validation` (Bean Validation) para garantir a integridade dos dados de entrada.
 * **Segurança de Credenciais:** Nenhuma senha ou dado sensível está "hardcoded". O projeto utiliza Variáveis de Ambiente para carregar as credenciais do banco de dados.
+* **Spring Security:** Configuração inicial integrada com CSRF desabilitado para facilitar o desenvolvimento da API.
 
 ## 🛠️ Tecnologias Utilizadas
 

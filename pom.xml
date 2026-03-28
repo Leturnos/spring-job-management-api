@@ -12,7 +12,7 @@
 	<artifactId>gestao-vagas</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>gestao-vagas</name>
-	<description>Demo project for Spring Boot</description>
+	<description>API de Gestão de Vagas</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -41,6 +41,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
